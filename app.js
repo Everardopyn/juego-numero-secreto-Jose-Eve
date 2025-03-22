@@ -7,12 +7,12 @@ parrafo.innerHTML = "Indica un número del 1 al 10";
 */
 //se asignan parametros y elementos en parentesis
 //se puedes asignar parametros entre los parentesis para que sea generica y se pueda reutilizar adelante
-let numeroSecreto = generarNumeroSecreto();
+let numeroSecreto = 0;
 let intentos = 1;
 let listaNumerosSorteados = [];//se crea lista de array
 let numeroMaximo = 10;
 
-console.log(numeroSecreto);
+
 
 function asignarTextoElementos(elemento, texto){
     let elemetoHTML = document.querySelector(elemento);
@@ -50,13 +50,15 @@ function limpiarCaja(){//limpia la caja donde se pone el numero
 
 //aqui no se necesita crear variable porque ya se creo antes y solo se retorna el valor
 function generarNumeroSecreto() {
-    let numeroGenerado = Math.floor(Math.random()*numeroMaximo)+1;
+    let numeroGenerado = Math.floor(Math.random()*10)+1;
+    //console.log(numeroGenerado);
+    //console.log(listaNumerosSorteados);
     //si ya sorteamos todos los numeros
-    if(listaNumerosSorteados.length == numeroMaximo){//length es la cantidad de datos en la lista
+    if(listaNumerosSorteados.length == 10){//length es la cantidad de datos en la lista
         asignarTextoElementos('p', 'Ya se sortearon todos los números posibles');
     }else{
         //si el numero generado esta incluido en la lista hacemos una operacion sino hacemos otra
-        if (listaNumerosSorteados.includes(numeroGenerado)){//el includes barre la lista
+        if (listaNumerosSorteados.includes(numeroGenerado)){ //el includes barre la lista
         return generarNumeroSecreto();//el return se debe de poner para regresar la misma funcion y se puede llamar la misma funcion dentro de ella para no crear otra
         }else{
         listaNumerosSorteados.push(numeroGenerado);//agrega a la lista 
